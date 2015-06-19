@@ -1,0 +1,7 @@
+{
+  "name": "alexa-kodi",
+  "description": "An app for Amazon Echo's Alexa to control kodi",
+  "repository": "https://github.com/wmelani/alexa-kodi",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "express", "static"]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "alexa-kodi",
+  "version": "0.1.0",
+  "description": "A Node.js app using Express 4 for communicating to the Alexa API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ent": "^2.2.0",
+    "express": "~4.9.x",
+    "lodash": "^3.9.3",
+    "mpromise": "^0.5.5",
+    "require-dir": "^0.3.0",
+    "restify": "^3.0.3",
+    "twitter": "^1.2.5"
+  },
+  "engines": {
+    "node": "0.12.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wmelani/alexa-kodi"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}
