@@ -5,7 +5,34 @@ var kodiService = require(app.dir + '/api/kodi-service.js').create({ host : proc
 
 function alexaPostRequest(req,response,done){
     console.log(req.body);
-    var text= "test";
+    var intent = req.body.request.intent.name;
+
+    if (intent == "PLAY"){
+        kodiService.play().then(function(x){
+            sendMessage(response, x.message);
+        });
+    }
+    else if (intent == "PAUSE"){
+        kodiService.pause().then(function(x){
+            sendMessage(response, x.message);
+        });
+    }
+    else if (intent == "STOP"){
+        kodiService.stop().then(function(x){
+            sendMessage(response, x.message);
+        });
+    }
+    else if (intent == "PLAYING"){
+        kodiService.info().then(function(x){
+            sendMessage(response, x.currentlyPlaying);
+        });
+    }
+    else{
+        sendMessage(response, "So sorry");
+    }
+}
+
+function sendMessage(response,text){
     var obj = {
         "version": "1.0",
         "sessionAttributes": {
@@ -24,7 +51,6 @@ function alexaPostRequest(req,response,done){
         }
     };
     response.send(obj);
-
 }
 
 
