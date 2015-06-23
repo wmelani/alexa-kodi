@@ -1,4 +1,5 @@
 "use strict";
+var _ = require('lodash');
 var app = require('../app.js');
 var kodiService = require(app.dir + '/api/kodi-connector.js').register({ host : process.env.KODI_HOST});
 
@@ -96,6 +97,18 @@ function getTVShowEpisodes(req,response,done){
             response.send(x.message);
         });
 }
+function playEpisode(req,response,done){
+    kodiService.searchTVShows({label : req.params.label})
+        .then(function(x){
+            kodiService.getTVShowEpisodes(x[0].tvshowid)
+                .then(function(y){
+                    var randIdx = _.random(0,y.result.episodes.length);
+                    kodiService.playEpisode(y.result.episodes[randIdx].episodeid).then(function(z){
+                        response.send("Playing episode " + y.result.episodes[randIdx].label + " of " + x.label);
+                    })
+                })
+        });
+}
 module.exports = exports;
 exports.pause = pause;
 exports.play = play;
@@ -105,3 +118,4 @@ exports.getMovies = getMovies;
 exports.getTVShows = getTVShows;
 exports.getTVShowDetails = getTVShowDetails;
 exports.getTVShowEpisodes = getTVShowEpisodes;
+exports.playEpisode = playEpisode;

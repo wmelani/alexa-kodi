@@ -13,5 +13,5 @@ exports.register = function (app, restify) {
     server.get('/getTVShows', c.kodi.getTVShows);
     server.get('/getTVShowDetails', c.kodi.getTVShowDetails);
     server.get('/getTVShowEpisodes', c.kodi.getTVShowEpisodes);
-
+    server.get('/playEpisode', c.kodi.playEpisode);
 };

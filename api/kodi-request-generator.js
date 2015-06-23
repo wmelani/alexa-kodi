@@ -9,13 +9,13 @@ function getMovies(props){
     return __getRPC("VideoLibrary.GetMovies", props, DEFAULT_MOVIE_PROPERTIES);
 }
 function getInfo(playerId){
-    return __getRPC("Player.GetItem",null, null,{ playerid : playerId});
+    return __getRPC("Player.GetItem",{ playerid : playerId});
 }
 function togglePlayPause(playerId){
-    return __getRPC("Player.PlayPause",null,null,{ playerid : playerId});
+    return __getRPC("Player.PlayPause",{ playerid : playerId});
 }
 function stop(playerId){
-    return __getRPC("Player.Stop",null,null, { playerid : playerId});
+    return __getRPC("Player.Stop",{ playerid : playerId});
 }
 function getPlayerStatus(playerId,properties){
     return __getRPCWithProperties("Player.GetProperties", properties,DEFAULT_PLAYER_PROPERTIES, {playerid : playerId});
@@ -48,10 +48,10 @@ function getRecentlyAddedEpisodes(props){
    return __getRPCWithProperties("VideoLibrary.GetRecentlyAddedEpisodes", props, DEFAULT_EPISODE_PROPERTIES);
 }
 function playEpisode(episodeid){
-     return __getRPC("Player.Open",null,null, {item : {episodeid : episodeid}})
+     return __getRPC("Player.Open",{item : {episodeid : episodeid}})
 }
 function seek(playerid, moment){
-    return __getRPC( "Player.Seek",null,null, {playerid : playerid, value : __getMomentValue(moment)});
+    return __getRPC( "Player.Seek", {playerid : playerid, value : __getMomentValue(moment)});
 }
 function __getMomentValue(moment){
 
