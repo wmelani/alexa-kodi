@@ -191,7 +191,14 @@ function getTVShowEpisodes(tvshowid){
     }).onReject(function(x){ promise.reject(x);});
     return promise;
 }
+function playEpisode(episodeId){
+    var promise = new Promise;
 
+    __doJsonRPCRequest(requestGenerator.playEpisode(episodeId)).then(function(data){
+        promise.fulfill(data);
+    }).onReject(function(x){ promise.reject(x);});
+    return promise;
+}
 module.exports = exports;
 exports.create = create;
 exports.pause = pause;
@@ -204,3 +211,4 @@ exports.searchMovies = searchMovies;
 exports.getActivePlayers = getActivePlayers;
 exports.getTVShowDetails = getTVShowDetails;
 exports.getTVShowEpisodes = getTVShowEpisodes;
+exports.playEpisode = playEpisode;

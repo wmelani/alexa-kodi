@@ -94,6 +94,9 @@ function getTVShowDetails(tvshowid){
 function getTVShowEpisodes(tvshowid){
     return kodi.getTVShowEpisodes(tvshowid);
 }
+function playEpisode(episodeId){
+    return kodi.playEpisode(episodeId);
+}
 module.exports = exports;
 exports.register = register;
 exports.connect = connect;
@@ -109,3 +112,4 @@ exports.searchMovies = searchMovies;
 exports.getActivePlayers = getActivePlayers;
 exports.getTVShowDetails = getTVShowDetails;
 exports.getTVShowEpisodes = getTVShowEpisodes;
+exports.playEpisode = playEpisode;

@@ -27,6 +27,19 @@ function alexaPostRequest(req,response,done){
             sendMessage(response, x.currentlyPlaying);
         });
     }
+    else if (intent === "PLAYRANDOM"){
+        console.log(req.body.request.intent.slots);
+        kodiService.searchTVShows({label : req.body.request.intent.slots[0]})
+            .then(function(x){
+                kodiService.getTVShowEpisodes(x.tvshowid)
+                    .then(function(y){
+                        var randIdx = _.random(0,y.result.episodes.length);
+                        kodiService.playEpisode(y.result.episodes[randIdx].episodeid).then(function(z){
+                            sendMessage(response,"Playing episode " + y.result.episodes[randIdx].label + " of " + x.label);
+                        })
+                    })
+            })
+    }
     else{
         sendMessage(response, "So sorry");
     }
