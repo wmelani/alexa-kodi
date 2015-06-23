@@ -28,8 +28,8 @@ function alexaPostRequest(req,response,done){
         });
     }
     else if (intent === "PLAYRANDOM"){
-        console.log(req.body.request.intent.slots);
-        kodiService.searchTVShows({label : req.body.request.intent.slots[0]})
+        console.log(req.body.request.intent.slots[0].Show.value);
+        kodiService.searchTVShows({label : req.body.request.intent.slots[0].Show.value})
             .then(function(x){
                 kodiService.getTVShowEpisodes(x.tvshowid)
                     .then(function(y){
