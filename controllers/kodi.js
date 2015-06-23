@@ -104,9 +104,18 @@ function playEpisode(req,response,done){
                 .then(function(y){
                     var randIdx = _.random(0,y.result.episodes.length);
                     kodiService.playEpisode(y.result.episodes[randIdx].episodeid).then(function(z){
-                        response.send("Playing episode " + y.result.episodes[randIdx].label + " of " + x.label);
-                    })
-                })
+                        sendMessage(response,"Playing episode " + y.result.episodes[randIdx].label + " of " + x.label);
+                    }).onReject(function(xx){
+                        console.log(xx);
+                        sendMessage(response,"So sorry");
+                    });
+                }).onReject(function(xxx){
+                    console.log(xxx);
+                    sendMessage(response,"So sorry");
+                });
+        }).onReject(function(x){
+            console.log(x);
+            sendMessage(response,"So sorry");
         });
 }
 module.exports = exports;
