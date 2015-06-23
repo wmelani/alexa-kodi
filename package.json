@@ -10,9 +10,11 @@
     "ent": "^2.2.0",
     "express": "~4.9.x",
     "lodash": "^3.9.3",
+    "moment": "^2.10.3",
     "mpromise": "^0.5.5",
     "require-dir": "^0.3.0",
     "restify": "^3.0.3",
+    "string": "^3.3.0",
     "twitter": "^1.2.5"
   },
   "engines": {
