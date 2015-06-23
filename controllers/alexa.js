@@ -2,7 +2,7 @@
 var Promise = require('mpromise');
 var _ = require('lodash');
 var app = require('../app');
-var kodiService = require(app.dir + '/api/kodi-service.js').create({ host : process.env.KODI_HOST});
+var kodiService = require(app.dir + '/api/kodi-connector.js').register({ host : process.env.KODI_HOST});
 
 function alexaPostRequest(req,response,done){
     console.log(req.body);
@@ -28,7 +28,7 @@ function alexaPostRequest(req,response,done){
             sendMessage(response, x.currentlyPlaying);
         });
     }
-    else if (intent === "PLAYRANDOM"){
+    else if (intent == "PLAYRANDOM"){
         console.log("------" + JSON.stringify(req.body) + "-----");
         console.log(JSON.stringify(req.body.request.intent.slots.Show.value));
         kodiService.searchTVShows({label : req.body.request.intent.slots.Show.value})
